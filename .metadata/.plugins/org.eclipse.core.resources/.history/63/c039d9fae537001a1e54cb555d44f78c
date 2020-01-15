@@ -1,0 +1,38 @@
+package com.example.demo.controller;
+
+import java.util.List;
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import com.example.demo.dto.ProductoDTO;
+import com.example.demo.entity.ProductoReducidoDTO;
+import com.example.demo.excepciones.ResourceNotFoundExecption;
+import com.example.demo.excepciones.ValidationException;
+import com.example.demo.service.ProductoService;
+
+@RestController
+public class ProdutoController {
+	
+	@Autowired
+	private ProductoService productoService;
+	
+	@GetMapping("/productos")
+	public List<ProductoDTO> obtenerProductos(){
+		return null;
+	}
+	
+	@GetMapping("/productos/{id_producto}")
+	public List<ProductoDTO> obtenerProductoById(@PathVariable("id_producto") Long id_producto) throws ResourceNotFoundExecption{
+		return null;
+	}
+	
+	@PostMapping("/productos")
+	public ProductoDTO guardarProducto(@Valid @RequestBody ProductoReducidoDTO producto) throws ValidationException, ResourceNotFoundExecption{
+		return null;
+	}
+}

@@ -1,6 +1,6 @@
 spring:
   application:
-    name: escuela-config-client
+    name: escuela-productoMS
   cloud:
     config:
       uri: http://localhost:8081

@@ -1,0 +1,62 @@
+package com.example.demo.controller;
+
+import java.util.List;
+import java.util.stream.StreamSupport;
+
+import javax.validation.Valid;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import com.example.demo.dto.ProductoDTO;
+import com.example.demo.entity.ImagenProducto;
+import com.example.demo.entity.Producto;
+import com.example.demo.entity.ProductoReducidoDTO;
+import com.example.demo.entity.TipoProducto;
+import com.example.demo.excepciones.ResourceNotFoundExecption;
+import com.example.demo.excepciones.ValidationException;
+import com.example.demo.service.ProductoService;
+import com.thoughtworks.xstream.mapper.Mapper;
+
+@RestController
+public class ProdutoController {
+	
+	@Autowired
+	private ProductoService productoService;
+	
+	@GetMapping("/productos")
+	public List<ProductoDTO> obtenerProductos(){
+		ModelMapper modelMapper = new ModelMapper();
+		Iterable<Producto> productos = productoService.obtenerProductos();
+		StreamSupport.stream(productos.spliterator(), false).map(p -> modelMapper.map(productos, destinationType));
+		
+		return null;
+	}
+	
+	@GetMapping("/productos/{id_producto}")
+	public ProductoDTO obtenerProductoById(@PathVariable("id_producto") Long id_producto) throws ResourceNotFoundExecption{
+		ModelMapper modelMapper = new ModelMapper();
+		return modelMapper.map(productoService.obtenerProductoPorID(id_producto), ProductoDTO.class);
+	}
+	
+	@PostMapping("/productos")
+	public ProductoDTO guardarProducto(@Valid @RequestBody ProductoReducidoDTO productoRDTO) throws ValidationException, ResourceNotFoundExecption{
+		ModelMapper modelMapper = new ModelMapper();
+		Producto producto = modelMapper.map(productoRDTO, Producto.class);
+		
+		TipoProducto tipoProducto = new TipoProducto();
+		tipoProducto.setCodigo(productoRDTO.getCodigoProducto());
+		
+		ImagenProducto imagenProducto = new ImagenProducto();
+		imagenProducto.setRutaImagen(productoRDTO.getRutaImagen());
+		imagenProducto.setRutaThumbnail(productoRDTO.getRutaThumbnail());
+		
+		producto.setTipoProducto(tipoProducto);
+		producto.setImagenProducto(imagenProducto);
+		
+		return modelMapper.map(productoService.guardarProducto(producto), ProductoDTO.class);
+	}
+}
