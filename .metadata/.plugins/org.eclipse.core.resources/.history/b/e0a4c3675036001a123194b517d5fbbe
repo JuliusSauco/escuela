@@ -1,0 +1,29 @@
+package com.example.demo.imp;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.example.demo.entity.Personas;
+import com.example.demo.repository.PersonaRepository;
+import com.example.demo.service.PersonaService;
+
+public class PersonaServiceimpl implements PersonaService {
+
+	@Autowired
+	private PersonaRepository personaRepository;
+	
+	@Override
+	public List<Personas> obtenerPersonas() {
+		// TODO Auto-generated method stub
+		
+		return personaRepository.findAll();
+	}
+
+	@Override
+	public void guardarPersonas(Personas personas) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

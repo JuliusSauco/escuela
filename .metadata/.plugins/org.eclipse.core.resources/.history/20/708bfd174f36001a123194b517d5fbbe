@@ -1,0 +1,14 @@
+package com.example.demo.repository;
+
+import org.springframework.data.repository.Repository;
+
+import com.example.demo.entity.Personas;
+
+//public class PersonaRepository {
+
+//}
+
+public interface PersonaRepository extends Repository<Personas, Long> {
+	
+}
+

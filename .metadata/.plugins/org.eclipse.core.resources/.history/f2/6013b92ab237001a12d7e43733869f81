@@ -1,0 +1,53 @@
+package com.example.demo.imp;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.example.demo.dto.CompanyReducidoDTO;
+import com.example.demo.entity.Company;
+import com.example.demo.entity.Persona;
+import com.example.demo.excepciones.ResourceNotFoundExecption;
+import com.example.demo.repository.CompanyRepository;
+import com.example.demo.repository.PersonaRepository;
+import com.example.demo.service.CompanyService;
+
+@Transactional(readOnly = true)
+@Service
+public class CompanyServiceimpl implements CompanyService {
+
+	@Autowired
+	private CompanyRepository companyRepository;
+	
+	@Autowired
+	private PersonaRepository personaRepository;
+	
+	@Override
+	public Iterable<Company> obtenerCompany() {
+		// TODO Auto-generated method stub
+		return companyRepository.findAll();
+	}
+
+	@Transactional(readOnly = false)
+	@Override
+	public Company guardarCompany(Company company) {
+		// TODO Auto-generated method stub
+		return companyRepository.save(company);
+	}
+
+	@Override
+	public CompanyReducidoDTO actualizarCompany(CompanyReducidoDTO company) {
+		// TODO Auto-generated method stub
+		return companyRepository.save(company);
+	}
+
+	@Override
+	public Company asociarCompany(Long id_company, Long id) throws ResourceNotFoundExecption {
+		// TODO Auto-generated method stub
+		Persona persona = personaRepository.findById(id).orElseThrow(
+				() -> new ResourceNotFoundExecption("No se encontro la persona con el codigo: " + id));
+		return null;
+	}
+
+
+}

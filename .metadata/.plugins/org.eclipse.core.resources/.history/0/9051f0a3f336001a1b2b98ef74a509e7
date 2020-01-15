@@ -1,0 +1,38 @@
+package com.example.demo.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@Entity
+public class Personas {
+	
+	@Id
+	@GeneratedValue
+	private Long id;
+	@Column
+	private String nombres;
+	@Column
+	private String apellidos;
+	@Column
+	private String dni;
+	
+	@ManyToOne
+	private Company company;
+
+	
+	public Personas(Long id, String nombres, String apellidos, String dni) 
+	   {
+	      super( );
+	      this.id = id;
+	      this.nombres = nombres;
+	      this.apellidos = apellidos;
+	      this.dni = dni;
+	   }
+}

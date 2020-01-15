@@ -1,0 +1,11 @@
+package com.example.demo.excepciones;
+
+public class PersonaCreateExecption extends Exception {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private String message;
+}

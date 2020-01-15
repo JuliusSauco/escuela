@@ -1,0 +1,17 @@
+package com.example.demo.controller;
+
+
+@RestController
+public class EscuelaControlador {
+	
+	
+	
+//	@Value("${palabra}")
+//	String palabra;
+//	
+//	@RequestMapping("/palabra")
+//	public String obtenerPalabra() {
+//		return "La palabra es: " + palabra;
+//	}
+	
+}
