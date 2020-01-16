@@ -1,21 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.example.demo.repository.PersonaRepository"/>
-<fullyQualifiedTypeName name="com.example.demo.entity.Persona"/>
-<fullyQualifiedTypeName name="com.example.demo.dto.CompanyDTO"/>
-<fullyQualifiedTypeName name="com.example.demo.entity.Company"/>
-<fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
-<fullyQualifiedTypeName name="org.springframework.cloud.netflix.eureka.server.EnableEurekaServer"/>
-<fullyQualifiedTypeName name="org.springframework.cloud.netflix.eureka.EnableEurekaClient"/>
-<fullyQualifiedTypeName name="org.springframework.data.jpa.repository.config.EnableJpaRepositories"/>
-<fullyQualifiedTypeName name="lombok.Setter"/>
-<fullyQualifiedTypeName name="javax.persistence.GenerationType"/>
-<fullyQualifiedTypeName name="java.math.BigDecimal"/>
-<fullyQualifiedTypeName name="javassist.bytecode.ByteArray"/>
 <fullyQualifiedTypeName name="javax.persistence.ManyToOne"/>
 <fullyQualifiedTypeName name="javax.persistence.OneToOne"/>
 <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonProperty"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
 <fullyQualifiedTypeName name="javax.validation.Valid"/>
@@ -24,8 +11,6 @@
 <fullyQualifiedTypeName name="com.example.demo.util.CustomRepository"/>
 <fullyQualifiedTypeName name="org.modelmapper.ModelMapper"/>
 <fullyQualifiedTypeName name="com.example.demo.entity.ProductoReducidoDTO"/>
-<fullyQualifiedTypeName name="com.example.demo.entity.TipoProducto"/>
-<fullyQualifiedTypeName name="com.example.demo.entity.ImagenProducto"/>
 <fullyQualifiedTypeName name="java.util.stream.StreamSupport"/>
 <fullyQualifiedTypeName name="com.example.demo.controller.ProdutoController"/>
 <fullyQualifiedTypeName name="com.thoughtworks.xstream.mapper.Mapper"/>
@@ -40,7 +25,6 @@
 <fullyQualifiedTypeName name="org.springframework.cloud.context.config.annotation.RefreshScope"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
 <fullyQualifiedTypeName name="javax.persistence.Entity"/>
-<fullyQualifiedTypeName name="lombok.Getter"/>
 <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
 <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
 <fullyQualifiedTypeName name="javax.persistence.Column"/>
@@ -48,16 +32,32 @@
 <fullyQualifiedTypeName name="javax.persistence.Id"/>
 <fullyQualifiedTypeName name="com.example.demo.repository.StockRepository"/>
 <fullyQualifiedTypeName name="com.netflix.discovery.converters.Auto"/>
-<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
 <fullyQualifiedTypeName name="com.example.demo.service.StockService"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
-<fullyQualifiedTypeName name="com.example.demo.dto.StockDTO"/>
 <fullyQualifiedTypeName name="com.example.demo.entity.Producto"/>
 <fullyQualifiedTypeName name="com.example.demo.repository.ProductoRepository"/>
 <fullyQualifiedTypeName name="com.example.demo.repository.TiendaRepository"/>
 <fullyQualifiedTypeName name="com.example.demo.entity.Tienda"/>
-<fullyQualifiedTypeName name="com.example.demo.entity.Stock"/>
 <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+<fullyQualifiedTypeName name="com.example.demo.entity.Stock"/>
+<fullyQualifiedTypeName name="org.springframework.data.jpa.repository.Query"/>
+<fullyQualifiedTypeName name="com.example.demo.dto.StockDTO"/>
+<fullyQualifiedTypeName name="com.netflix.discovery.DiscoveryClient"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+<fullyQualifiedTypeName name="com.example.demo.dto.CantidadDTO"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="org.springframework.cloud.client.ServiceInstance"/>
+<fullyQualifiedTypeName name="org.springframework.cloud.client.discovery.EnableDiscoveryClient"/>
+<fullyQualifiedTypeName name="org.springframework.cloud.netflix.eureka.EnableEurekaClient"/>
+<fullyQualifiedTypeName name="org.springframework.cloud.client.discovery.DiscoveryClient"/>
+<fullyQualifiedTypeName name="org.springframework.web.client.RestTemplate"/>
+<fullyQualifiedTypeName name="java.util.Optional"/>
+<fullyQualifiedTypeName name="lombok.Setter"/>
+<fullyQualifiedTypeName name="lombok.Getter"/>
+<fullyQualifiedTypeName name="com.example.demo.repository.TipoProductoRepository"/>
+<fullyQualifiedTypeName name="com.example.demo.entity.TipoProducto"/>
 <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
+<fullyQualifiedTypeName name="com.example.demo.repository.ImagenProductoRepository"/>
+<fullyQualifiedTypeName name="com.example.demo.entity.ImagenProducto"/>
 </qualifiedTypeNameHistroy>
