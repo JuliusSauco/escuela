@@ -24,5 +24,8 @@ public class ProductoDTO {
 	private TipoProducto tipoProducto;
 	@JsonProperty(value = "img_producto")
 	private ImagenProducto imagenProducto;
+	
+	//CANTIDAD
+	private Long cantidadStock;
 
 }

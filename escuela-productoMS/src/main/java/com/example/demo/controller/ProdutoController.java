@@ -1,41 +1,78 @@
 package com.example.demo.controller;
 
+import java.net.URI;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
+
 import javax.validation.Valid;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import com.example.demo.dto.CantidadDTO;
 import com.example.demo.dto.ProductoDTO;
+import com.example.demo.dto.ProductoReducidoDTO;
 import com.example.demo.entity.ImagenProducto;
 import com.example.demo.entity.Producto;
-import com.example.demo.entity.ProductoReducidoDTO;
 import com.example.demo.entity.TipoProducto;
 import com.example.demo.excepciones.ResourceNotFoundExecption;
 import com.example.demo.excepciones.ValidationException;
 import com.example.demo.service.ProductoService;
 
 @RestController
+@RefreshScope
 public class ProdutoController {
+	
+	@Autowired
+	private DiscoveryClient client;
 	
 	@Autowired
 	private ProductoService productoService;
 	
+	public CantidadDTO getCantidad(String service, Long idProducto) {
+		List<ServiceInstance> list = client.getInstances(service);
+		if (list != null && list.size() == 0) {
+			URI uri = list.get(0).getUri();
+			if(uri != null) {
+				return (new RestTemplate()).getForObject(uri.getPath() + "/stock/acumulado/{idProducto}", CantidadDTO.class, idProducto);
+			}
+		}
+		return null;
+	}
+	
+	@Value("${igv}")
+	private String igv;
+	
+	@GetMapping("/igv")
+	public String getIgv() {
+		return "El igv actual es: " + this.igv;
+	}
+	
 	@GetMapping("/productos")
 	public Iterable<ProductoDTO> obtenerProductos(){
 		ModelMapper modelMapper = new ModelMapper();
-		return StreamSupport.stream(productoService.obtenerProductos().spliterator(), false)
+		Iterable<Producto> productos = productoService.obtenerProductos();
+		return StreamSupport.stream(productos.spliterator(), false)
 				.map(c -> modelMapper.map(c, ProductoDTO.class)).collect(Collectors.toList());
 	}
 	
 	@GetMapping("/productos/{id_producto}")
 	public ProductoDTO obtenerProductoById(@PathVariable("id_producto") Long id_producto) throws ResourceNotFoundExecption{
 		ModelMapper modelMapper = new ModelMapper();
-		return modelMapper.map(productoService.obtenerProductoPorID(id_producto), ProductoDTO.class);
+		ProductoDTO producto = modelMapper.map(productoService.obtenerProductoPorID(id_producto), ProductoDTO.class);
+		producto.setCantidadStock(getCantidad("escuela-stockMS", id_producto).getCantidadStock());
+		return producto;
 	}
 	
 	@PostMapping("/productos")
@@ -55,4 +92,5 @@ public class ProdutoController {
 		
 		return modelMapper.map(productoService.guardarProducto(producto), ProductoDTO.class);
 	}
+	
 }

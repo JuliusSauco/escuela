@@ -5,6 +5,8 @@ import java.util.List;
 import javax.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +22,11 @@ import com.example.demo.excepciones.ResourceNotFoundExecption;
 import com.example.demo.service.PersonaService;
 
 @RestController
+@RefreshScope
 public class PersonaController {
+	
+	@Value("${igv}")
+	private String igv;
 
 	@Autowired
 	private PersonaService personaService;
@@ -46,5 +52,10 @@ public class PersonaController {
 	@PutMapping("/personas/{id}/company/{id_company}")
 	public Persona asociarPersona_Company(@PathVariable("id_company") Long id_company, @PathVariable("id") Long id) throws ResourceNotFoundExecption {
 		return personaService.asociarCompany(id_company, id);
+	}
+	
+	@GetMapping("/igv")
+	public String getIgv() {
+		return "El igv actual es: " + this.igv;
 	}
 }
