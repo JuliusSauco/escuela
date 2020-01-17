@@ -49,8 +49,4 @@ public class Producto {
 	@OneToOne(cascade = CascadeType.ALL)
 	private ImagenProducto imagenProducto;
 	
-//	CANTIDAD
-//	@Column
-	private Long cantidadStock;
-	
 }

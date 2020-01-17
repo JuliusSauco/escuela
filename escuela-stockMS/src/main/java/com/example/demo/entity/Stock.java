@@ -28,6 +28,6 @@ public class Stock {
 	private Long idTienda;
 	
 	@Column
-	private int cantidad;
+	private Long cantidad;
 	
 }

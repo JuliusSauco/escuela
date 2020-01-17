@@ -13,13 +13,13 @@ public class StockServiceImpl implements StockService {
 	private StockRepository stockRepository;
 
 	@Override
-	public Integer obtenerCantidadProductos(Long idProducto) throws ResourceNotFoundExecption {
+	public int obtenerCantidadProductos(Long idProducto) throws ResourceNotFoundExecption {
 		return stockRepository.obtCantidadTotal(idProducto).orElseThrow(
 				() -> new ResourceNotFoundExecption("No se encontro la persona con el codigo: " + idProducto));
 	}
 
 	@Override
-	public Integer obtenerCatidadProductosPorTienda(Long idProducto, Long idTienda) throws ResourceNotFoundExecption {
+	public int obtenerCatidadProductosPorTienda(Long idProducto, Long idTienda) throws ResourceNotFoundExecption {
 		// TODO Auto-generated method stub
 		return stockRepository.obtCantidad(idProducto, idTienda).orElseThrow(
 				() -> new ResourceNotFoundExecption("No se encontro el producto con el codigo: " + idProducto));

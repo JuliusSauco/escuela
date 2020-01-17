@@ -10,11 +10,10 @@ import com.example.demo.util.CustomRepository;
 @Repository
 public interface StockRepository extends CustomRepository<Stock, Long>  {
 	
-	
-	@Query("SELECT SUM(s.cantidad) FROM stock s WHERE s.id_producto = ?1")
+	@Query(value="select sum(s.cantidad) from stock s where s.id_producto = ?1", nativeQuery = true)
 	Optional<Integer> obtCantidadTotal(Long idProducto);
 	
-	@Query("SELECT SUM(s.cantidad) FROM stock s WHERE s.id_producto = ?1 AND s.id_tienda = ?2")
+	@Query(value="select sum(s.cantidad) from stock s where s.id_producto = ?1 and s.id_tienda = ?2", nativeQuery = true)
 	Optional<Integer> obtCantidad(Long idProducto, Long idTienda);
 	
 }

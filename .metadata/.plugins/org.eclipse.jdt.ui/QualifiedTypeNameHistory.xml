@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="javax.persistence.ManyToOne"/>
 <fullyQualifiedTypeName name="javax.persistence.OneToOne"/>
 <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonProperty"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
@@ -44,8 +43,6 @@
 <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.Query"/>
 <fullyQualifiedTypeName name="com.example.demo.dto.StockDTO"/>
 <fullyQualifiedTypeName name="com.netflix.discovery.DiscoveryClient"/>
-<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
-<fullyQualifiedTypeName name="com.example.demo.dto.CantidadDTO"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="org.springframework.cloud.client.ServiceInstance"/>
 <fullyQualifiedTypeName name="org.springframework.cloud.client.discovery.EnableDiscoveryClient"/>
@@ -55,9 +52,12 @@
 <fullyQualifiedTypeName name="java.util.Optional"/>
 <fullyQualifiedTypeName name="lombok.Setter"/>
 <fullyQualifiedTypeName name="lombok.Getter"/>
-<fullyQualifiedTypeName name="com.example.demo.repository.TipoProductoRepository"/>
 <fullyQualifiedTypeName name="com.example.demo.entity.TipoProducto"/>
 <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
-<fullyQualifiedTypeName name="com.example.demo.repository.ImagenProductoRepository"/>
 <fullyQualifiedTypeName name="com.example.demo.entity.ImagenProducto"/>
+<fullyQualifiedTypeName name="com.example.demo.dto.CantidadDTO"/>
+<fullyQualifiedTypeName name="com.example.demo.repository.TipoProductoRepository"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+<fullyQualifiedTypeName name="com.example.demo.repository.ImagenProductoRepository"/>
+<fullyQualifiedTypeName name="java.lang.annotation.Native"/>
 </qualifiedTypeNameHistroy>

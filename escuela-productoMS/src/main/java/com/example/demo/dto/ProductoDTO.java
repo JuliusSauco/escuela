@@ -26,6 +26,7 @@ public class ProductoDTO {
 	private ImagenProducto imagenProducto;
 	
 	//CANTIDAD
-	private Long cantidadStock;
+	private int cantidadStock;
+
 
 }

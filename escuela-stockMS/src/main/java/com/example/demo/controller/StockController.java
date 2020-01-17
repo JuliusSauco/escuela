@@ -20,7 +20,7 @@ public class StockController {
 	@GetMapping("/stock/acumulado/producto/{idProducto}")
 	public CantidadDTO obtenerCantidadTienda(@PathVariable("idProducto") Long idProducto) throws ResourceNotFoundExecption {
 		CantidadDTO response = new CantidadDTO();
-		response.setCantidad(stockService.obtenerCantidadProductos(idProducto));
+		response.setCantidadStock(stockService.obtenerCantidadProductos(idProducto));
 		return response;
 	}
 	
@@ -28,9 +28,9 @@ public class StockController {
 	public CantidadDTO obtenerCantidadProductosPorTienda(@PathVariable("idProducto") Long idProducto, 
 			@PathVariable("idTienda") Long idTienda) throws ResourceNotFoundExecption{
 		CantidadDTO response = new CantidadDTO();
-		response.setCantidad(stockService.obtenerCatidadProductosPorTienda(idProducto, idTienda));
+		response.setCantidadStock(stockService.obtenerCatidadProductosPorTienda(idProducto, idTienda));
+		//response.setCantidadStock(666);
 		return response;
-		
 	}
 	
 }

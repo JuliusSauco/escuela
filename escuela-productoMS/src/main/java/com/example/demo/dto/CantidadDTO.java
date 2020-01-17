@@ -12,6 +12,6 @@ import lombok.Setter;
 public class CantidadDTO {
 
 	@JsonProperty(value = "cantidad")
-	private Long cantidadStock;
+	private int cantidadStock;
 
 }

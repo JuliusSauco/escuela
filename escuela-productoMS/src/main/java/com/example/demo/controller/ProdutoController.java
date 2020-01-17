@@ -42,10 +42,12 @@ public class ProdutoController {
 	
 	public CantidadDTO getCantidad(String service, Long idProducto) {
 		List<ServiceInstance> list = client.getInstances(service);
-		if (list != null && list.size() == 0) {
-			URI uri = list.get(0).getUri();
-			if(uri != null) {
-				return (new RestTemplate()).getForObject(uri.getPath() + "/stock/acumulado/{idProducto}", CantidadDTO.class, idProducto);
+		if (list != null && list.size() > 0) {
+			int rand = (int) Math.round(Math.random()*10) % list.size();
+			URI uri = list.get(rand).getUri();
+			if (uri != null) {
+				return (new RestTemplate()).getForObject(uri.toString() + "/stock/acumulado/producto/{idProducto}",
+						CantidadDTO.class, idProducto);
 			}
 		}
 		return null;
@@ -69,9 +71,10 @@ public class ProdutoController {
 	
 	@GetMapping("/productos/{id_producto}")
 	public ProductoDTO obtenerProductoById(@PathVariable("id_producto") Long id_producto) throws ResourceNotFoundExecption{
-		ModelMapper modelMapper = new ModelMapper();
-		ProductoDTO producto = modelMapper.map(productoService.obtenerProductoPorID(id_producto), ProductoDTO.class);
-		producto.setCantidadStock(getCantidad("escuela-stockMS", id_producto).getCantidadStock());
+		ModelMapper mapper = new ModelMapper();
+		ProductoDTO producto = mapper.map(productoService.obtenerProductoPorID(id_producto), ProductoDTO.class);
+		CantidadDTO cantidadDTO = getCantidad("escuela-stockMS", id_producto);
+		producto.setCantidadStock(cantidadDTO.getCantidadStock());
 		return producto;
 	}
 	
