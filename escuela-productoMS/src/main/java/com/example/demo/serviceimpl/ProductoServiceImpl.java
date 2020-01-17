@@ -45,4 +45,13 @@ public class ProductoServiceImpl implements ProductoService {
 		return productoRepository.save(producto);
 	}
 
+	@Override
+	public Producto obtenerPrecioProducto(Long id_producto) throws ResourceNotFoundExecption {
+		// TODO Auto-generated method stub
+		Producto producto = productoRepository.findById(id_producto).orElseThrow(
+				() -> new ResourceNotFoundExecption(String.format("No se encontro el id: ", id_producto)));
+		
+		return producto;
+	}
+
 }

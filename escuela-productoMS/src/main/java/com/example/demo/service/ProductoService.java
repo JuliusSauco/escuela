@@ -11,5 +11,6 @@ public interface ProductoService {
 
 	public Producto obtenerProductoPorID(Long id) throws ResourceNotFoundExecption;
 	public Producto guardarProducto(Producto producto) throws ResourceNotFoundExecption;
+	public Producto obtenerPrecioProducto(Long id_producto) throws ResourceNotFoundExecption;
 	
 }

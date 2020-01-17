@@ -1,6 +1,7 @@
 package com.example.demo.dto;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import com.example.demo.entity.ImagenProducto;
 import com.example.demo.entity.TipoProducto;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -28,5 +29,7 @@ public class ProductoDTO {
 	//CANTIDAD
 	private int cantidadStock;
 
+	//FEHCA
+	private Date fecha;
 
 }

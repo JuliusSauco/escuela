@@ -1,12 +1,11 @@
 package com.example.demo.controller;
 
+import java.math.BigDecimal;
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
-
 import javax.validation.Valid;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,7 +18,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-
 import com.example.demo.dto.CantidadDTO;
 import com.example.demo.dto.ProductoDTO;
 import com.example.demo.dto.ProductoReducidoDTO;
@@ -69,11 +67,18 @@ public class ProdutoController {
 				.map(c -> modelMapper.map(c, ProductoDTO.class)).collect(Collectors.toList());
 	}
 	
+	@GetMapping("producto_precio/{idProducto}")
+	public BigDecimal obtenerPrecioProducto(@PathVariable("id_producto") Long id_producto) throws ResourceNotFoundExecption{
+		ModelMapper modelMapper = new ModelMapper();
+		ProductoDTO producto = modelMapper.map(productoService.obtenerPrecioProducto(id_producto), ProductoDTO.class);
+		return producto.getPrecio();
+	}
+	
 	@GetMapping("/productos/{id_producto}")
 	public ProductoDTO obtenerProductoById(@PathVariable("id_producto") Long id_producto) throws ResourceNotFoundExecption{
 		ModelMapper mapper = new ModelMapper();
 		ProductoDTO producto = mapper.map(productoService.obtenerProductoPorID(id_producto), ProductoDTO.class);
-		CantidadDTO cantidadDTO = getCantidad("escuela-stockMS", id_producto);
+		CantidadDTO cantidadDTO = getCantidad("almacen-ms", id_producto);
 		producto.setCantidadStock(cantidadDTO.getCantidadStock());
 		return producto;
 	}

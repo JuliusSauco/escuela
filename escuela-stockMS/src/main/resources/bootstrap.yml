@@ -1,6 +1,6 @@
 spring:
   application:
-    name: escuela-stockMS
+    name: almacen-ms
   cloud:
     config:
       uri: http://localhost:8081
